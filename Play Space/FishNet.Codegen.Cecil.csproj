@@ -199,8 +199,8 @@
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil\GenericInstanceMethod.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil\ModuleKind.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil.Metadata\Buffers.cs" />
-    <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil\IMethodSignature.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil.Cil\VariableDefinition.cs" />
+    <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil\IMethodSignature.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil.Cil\Document.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Cecil.PE\Image.cs" />
     <Compile Include="Assets\FishNet\CodeGenerating\cecil-0.11.4\Mono.Security.Cryptography\CryptoService.cs" />
@@ -855,11 +855,11 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TestRunner">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

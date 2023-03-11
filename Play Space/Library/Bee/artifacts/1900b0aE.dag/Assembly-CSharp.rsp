@@ -333,6 +333,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/FishNet.Codegen.Cecil.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/FishNet.Example.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/FishNet.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ConversionSystem.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Updater.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
@@ -361,6 +365,8 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.2.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/FishNet/Upgrading/MirrorUpgrade.cs"
 "Assets/FishNet/Upgrading/UpgradeFromMirrorMenu.cs"
+"Assets/Scripts/AnimatorHandler.cs"
+"Assets/Scripts/AnimatorManager.cs"
 "Assets/Scripts/PlayerScript/PlayerMovement.cs"
 -langversion:9.0
 

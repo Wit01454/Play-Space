@@ -304,6 +304,7 @@
 -r:"Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/FishNet.Example.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/FishNet.Runtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aP.dag/Unity.AI.Navigation.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.TextMeshPro.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.Timeline.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.VisualScripting.Core.ref.dll"
@@ -315,6 +316,8 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.2.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/FishNet/Upgrading/MirrorUpgrade.cs"
 "Assets/FishNet/Upgrading/UpgradeFromMirrorMenu.cs"
+"Assets/Scripts/AnimatorHandler.cs"
+"Assets/Scripts/AnimatorManager.cs"
 "Assets/Scripts/PlayerScript/PlayerMovement.cs"
 -langversion:9.0
 

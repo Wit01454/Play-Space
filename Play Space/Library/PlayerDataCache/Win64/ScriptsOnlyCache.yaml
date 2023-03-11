@@ -1,7 +1,8 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - PlayerMovement
+    - PlaySpace.AnimatorHandler
+    - PlaySpace.PlayerMovement
     FishNet.Example.dll:
     - FishNet.Example.Prediction.CharacterControllers.CharacterControllerPrediction
     - FishNet.Example.Prediction.Rigidbodies.RigidbodyPrediction
@@ -10,6 +11,7 @@ ScriptsOnlyBuild:
     - NetworkHudCanvases
     - PredictedBullet
     FishNet.Runtime.dll:
+    - FishNet.Component.Animating.NetworkAnimator
     - FishNet.Component.Observing.SceneCondition
     - FishNet.Component.Ownership.PredictedSpawn
     - FishNet.Component.Prediction.PredictedObject
@@ -22,11 +24,21 @@ ScriptsOnlyBuild:
     - FishNet.Observing.NetworkObserver
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
@@ -74,61 +86,79 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1528}
+      Script: {instanceID: 1530}
     - Class: 114
-      Script: {instanceID: 1580}
+      Script: {instanceID: 1582}
     - Class: 114
-      Script: {instanceID: 1584}
+      Script: {instanceID: 1586}
     - Class: 114
-      Script: {instanceID: 2198}
+      Script: {instanceID: 2146}
     - Class: 114
-      Script: {instanceID: 2934}
+      Script: {instanceID: 2214}
     - Class: 114
-      Script: {instanceID: 3100}
+      Script: {instanceID: 2724}
     - Class: 114
-      Script: {instanceID: 3238}
+      Script: {instanceID: 2954}
     - Class: 114
-      Script: {instanceID: 3244}
+      Script: {instanceID: 3122}
     - Class: 114
-      Script: {instanceID: 3264}
+      Script: {instanceID: 3260}
     - Class: 114
-      Script: {instanceID: 3496}
+      Script: {instanceID: 3266}
     - Class: 114
-      Script: {instanceID: 3528}
+      Script: {instanceID: 3286}
     - Class: 114
-      Script: {instanceID: 4876}
+      Script: {instanceID: 3524}
     - Class: 114
-      Script: {instanceID: 5458}
+      Script: {instanceID: 3556}
     - Class: 114
-      Script: {instanceID: 6448}
+      Script: {instanceID: 4914}
     - Class: 114
-      Script: {instanceID: 6632}
+      Script: {instanceID: 5504}
     - Class: 114
-      Script: {instanceID: 6822}
+      Script: {instanceID: 5808}
     - Class: 114
-      Script: {instanceID: 7112}
+      Script: {instanceID: 6522}
     - Class: 114
-      Script: {instanceID: 7784}
+      Script: {instanceID: 6708}
     - Class: 114
-      Script: {instanceID: 8486}
+      Script: {instanceID: 6766}
     - Class: 114
-      Script: {instanceID: 8606}
+      Script: {instanceID: 6904}
     - Class: 114
-      Script: {instanceID: 24442}
+      Script: {instanceID: 7198}
+    - Class: 114
+      Script: {instanceID: 7874}
+    - Class: 114
+      Script: {instanceID: 8582}
+    - Class: 114
+      Script: {instanceID: 8704}
+    - Class: 114
+      Script: {instanceID: 26992}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
     - Class: 136
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 143
       Script: {instanceID: 0}
@@ -223,6 +253,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ce69c1d34c3719482ff2727dc45164c1
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: PlayerMovement
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -813,6 +849,12 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 3a09ae0a4d0e75b36abda223b76ab1ea
+    assemblyName: Unity.AI.Navigation
+    namespaceName: Unity.AI.Navigation
+    className: NavMeshLink
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -903,6 +945,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 15146d050d6483434f5274d48058398e
+    assemblyName: Unity.AI.Navigation
+    namespaceName: Unity.AI.Navigation
+    className: NavMeshModifierVolume
+  - hash:
+      serializedVersion: 2
       Hash: ce670371265af50e12cc59c9b9e94af9
     assemblyName: FishNet.Runtime
     namespaceName: FishNet.Editing
@@ -919,6 +967,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
     className: PanelEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: f701137b5fe9552c6bf7c218e1d6c0d5
+    assemblyName: Unity.AI.Navigation
+    namespaceName: Unity.AI.Navigation
+    className: NavMeshSurface
   - hash:
       serializedVersion: 2
       Hash: 912456d6ea195562dd35700dfa906d9c
@@ -1057,6 +1111,12 @@ ScriptsOnlyBuild:
     assemblyName: FishNet.Runtime
     namespaceName: FishNet.Component.Prediction
     className: OfflineRigidbody
+  - hash:
+      serializedVersion: 2
+      Hash: aa3abe62679eed605debfa89a32fd294
+    assemblyName: Unity.AI.Navigation
+    namespaceName: Unity.AI.Navigation
+    className: NavMeshModifier
   - hash:
       serializedVersion: 2
       Hash: a03cf6f60c605d858f83449f4b4fc400
@@ -1365,10 +1425,16 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e5c9b8ff9c0ea606aa60661fa40f3d65
+      Hash: 2d8ea424cb663e87158e3defc8693549
     assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerMovement
+    namespaceName: PlaySpace
+    className: AnimatorHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 757aa3123742691999f13bf0e34b98ee
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: AnimatorManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/PlaySpaceScene.unity

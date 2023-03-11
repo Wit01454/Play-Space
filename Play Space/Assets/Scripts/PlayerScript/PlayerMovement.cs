@@ -1,72 +1,86 @@
-using System.Collections;
+๏ปฟusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Connection;
 using FishNet.Object;
 
-public class PlayerMovement : NetworkBehaviour
+namespace PlaySpace
 {
-    public float moveSpeed = 5f; // ความเร็วในการเคลื่อนที่
-    public float jumpForce = 10f; // แรงกระโดด
-    public float gravity = 20f; // แรงโน้มถ่วง
-    public float turnSpeed = 360;
-
-    public float rotationspeed = 0.5f;
-
-    private Vector3 moveDirection = Vector3.zero; // เคลื่อนที่ตามแกน x,y,z ของโลก (global axis)
-    private Rigidbody rigidbody; // ควบคุมการเคลื่อนที่ของตัวละคร
-
-    float horizontalMovement;
-    float verticalMovement;
-
-
-    void Start()
+    public class PlayerMovement : NetworkBehaviour
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.freezeRotation = true; // ล็อคการหมุนของ rigidbody
-    }
+        [SerializeField]
+        private GameObject _camera;
+        [SerializeField]
+        private float _moveRate = 4f;
+        [SerializeField]
+        private bool _clientAuth = true;
 
-    void Update()
-    {
-        Look();
-        jump();
-    }
+        public AnimatorHandler animatorHandler;
+        float moveAmount;
 
-    void FixedUpdate()
-    {
-        Move();
-    }
 
-    private void Look()
-    {
-        if (moveDirection != Vector3.zero)
+        private void Start()
         {
-            var relative = (transform.position + moveDirection) - transform.position;
-            var rot = Quaternion.LookRotation(relative, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnSpeed * Time.deltaTime);
-        }
-        
-    }
-
-    private void jump()
-    {
-        if (Input.GetButtonDown("Jump"))
-        { // ตรวจสอบว่าผู้เล่นกดปุ่มกระโดดหรือไม่
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // กำหนดแรงกระโดด
+            animatorHandler.Initialize();
         }
 
-        moveDirection.y -= gravity * Time.deltaTime; // เพิ่มแรงโน้มถ่วงให้ตกต่ำลง
-    }
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            if (base.IsOwner)
+                _camera.SetActive(true);
+        }
 
-    private void Move()
-    {
-        // เคลื่อนที่ตามแกน x,y,z ของโลก (global axis)
-        horizontalMovement = Input.GetAxis("Horizontal"); // เคลื่อนที่ซ้าย-ขวา
-        verticalMovement = Input.GetAxis("Vertical"); // เคลื่อนที่ขึ้น-ลง
-        
-        moveDirection = new Vector3(horizontalMovement, 0f, verticalMovement); // กำหนดเคลื่อนที่ตามแกน x,z
+        private void Update()
+        {
+            if (!base.IsOwner)
+                return;
 
-        rigidbody.MovePosition(transform.position + moveDirection * moveSpeed * Time.deltaTime); // เคลื่อนที่ตัวละคร
+            float hor = Input.GetAxisRaw("Horizontal");
+            float ver = Input.GetAxisRaw("Vertical");
+
+            moveAmount = Mathf.Clamp01(Mathf.Abs(hor) + Mathf.Abs(ver));
+
+            /* If ground cannot be found for 20 units then bump up 3 units. 
+             * This is just to keep player on ground if they fall through
+             * when changing scenes.             */
+            if (_clientAuth || (!_clientAuth && base.IsServer))
+            {
+                if (!Physics.Linecast(transform.position + new Vector3(0f, 0.3f, 0f), transform.position - (Vector3.one * 20f)))
+                    transform.position += new Vector3(0f, 3f, 0f);
+            }
+
+            if (_clientAuth)
+                Move(hor, ver);
+            else
+                ServerMove(hor, ver);
+        }
+
+        [ServerRpc]
+        private void ServerMove(float hor, float ver)
+        {
+            Move(hor, ver);
+        }
+
+        private void Move(float hor, float ver)
+        {
+            float gravity = -10f * Time.deltaTime;
+            //If ray hits floor then cancel gravity.
+            Ray ray = new Ray(transform.position + new Vector3(0f, 0.05f, 0f), -Vector3.up);
+            if (Physics.Raycast(ray, 0.1f + -gravity))
+                gravity = 0f;
+
+            /* Moving. */
+            Vector3 direction = new Vector3(
+                0f,
+                gravity,
+                ver * _moveRate * Time.deltaTime);
+
+            transform.position += transform.TransformDirection(direction);
+            transform.Rotate(new Vector3(0f, hor * 100f * Time.deltaTime, 0f));
+            
+            animatorHandler.UpdateAnimatorValues(moveAmount, 0);
+        }
     }
 }
+
