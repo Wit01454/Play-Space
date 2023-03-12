@@ -365,9 +365,13 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.2.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/FishNet/Upgrading/MirrorUpgrade.cs"
 "Assets/FishNet/Upgrading/UpgradeFromMirrorMenu.cs"
-"Assets/Scripts/AnimatorHandler.cs"
-"Assets/Scripts/AnimatorManager.cs"
+"Assets/Scripts/Animation/AnimatorHandler.cs"
+"Assets/Scripts/Animation/AnimatorManager.cs"
+"Assets/Scripts/PlayerScript/LookAtCamera.cs"
+"Assets/Scripts/PlayerScript/NameDisplay.cs"
+"Assets/Scripts/PlayerScript/NameSetterCanvas.cs"
 "Assets/Scripts/PlayerScript/PlayerMovement.cs"
+"Assets/Scripts/PlayerScript/PlayerNameTracker.cs"
 -langversion:9.0
 
 /deterministic

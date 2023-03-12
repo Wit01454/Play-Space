@@ -81,6 +81,7 @@ namespace PlaySpace
             
             animatorHandler.UpdateAnimatorValues(moveAmount, 0);
         }
+    
     }
 }
 
