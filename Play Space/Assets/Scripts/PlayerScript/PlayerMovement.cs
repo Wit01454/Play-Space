@@ -81,7 +81,31 @@ namespace PlaySpace
             
             animatorHandler.UpdateAnimatorValues(moveAmount, 0);
         }
-    
+
+       
+        private void OnTriggerStay(Collider collision)
+        {
+
+            if (collision.tag == "Interactable")
+            {
+
+                Interactable interactableOpject = collision.GetComponent<Interactable>();
+
+                if (interactableOpject != null)
+                {
+
+                    string interatableText = interactableOpject.interactbleText;
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        collision.GetComponent<Interactable>().Interact(this);
+                    }
+                    
+                }
+
+            }
+
+        }
     }
 }
 

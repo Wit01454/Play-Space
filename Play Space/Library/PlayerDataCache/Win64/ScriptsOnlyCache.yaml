@@ -1,10 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ChatBroadcastGuide
     - LookAtCamera
     - NameDisplay
     - NameSetterCanvas
     - PlaySpace.AnimatorHandler
+    - PlaySpace.Character
+    - PlaySpace.CharacterSelect
+    - PlaySpace.Door
     - PlaySpace.PlayerMovement
     - PlayerNameTracker
     FishNet.Example.dll:
@@ -44,8 +48,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -56,10 +62,15 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.VerticalLayoutGroup
   serializedClasses:
     FishNet.Runtime:
     - FishNet.Component.Transforming.NetworkTransform/SnappedAxes
@@ -89,6 +100,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
     - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.RectOffset
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
@@ -100,8 +112,16 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.ScrollRect/ScrollRectEvent
+    - UnityEngine.UI.Scrollbar/ScrollEvent
     - UnityEngine.UI.SpriteState
-  methodsToPreserve: []
+  methodsToPreserve:
+  - assembly: Assembly-CSharp
+    fullTypeName: PlaySpace.CharacterSelect
+    methodName: Right
+  - assembly: Assembly-CSharp
+    fullTypeName: PlaySpace.CharacterSelect
+    methodName: Left
   sceneClasses:
     Assets/Scenes/PlaySpaceScene.unity:
     - Class: 1
@@ -147,81 +167,99 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1530}
+      Script: {instanceID: 1556}
     - Class: 114
-      Script: {instanceID: 1582}
+      Script: {instanceID: 1608}
     - Class: 114
-      Script: {instanceID: 1586}
+      Script: {instanceID: 1612}
     - Class: 114
-      Script: {instanceID: 1724}
+      Script: {instanceID: 1750}
     - Class: 114
-      Script: {instanceID: 2214}
+      Script: {instanceID: 2068}
     - Class: 114
-      Script: {instanceID: 2252}
+      Script: {instanceID: 2176}
     - Class: 114
-      Script: {instanceID: 2724}
+      Script: {instanceID: 2244}
     - Class: 114
-      Script: {instanceID: 2954}
+      Script: {instanceID: 2282}
     - Class: 114
-      Script: {instanceID: 3122}
+      Script: {instanceID: 2408}
     - Class: 114
-      Script: {instanceID: 3260}
+      Script: {instanceID: 2756}
     - Class: 114
-      Script: {instanceID: 3266}
+      Script: {instanceID: 2986}
     - Class: 114
-      Script: {instanceID: 3286}
+      Script: {instanceID: 3132}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3156}
     - Class: 114
-      Script: {instanceID: 3556}
+      Script: {instanceID: 3294}
     - Class: 114
-      Script: {instanceID: 3798}
+      Script: {instanceID: 3300}
     - Class: 114
-      Script: {instanceID: 4444}
+      Script: {instanceID: 3320}
     - Class: 114
-      Script: {instanceID: 4460}
+      Script: {instanceID: 3496}
     - Class: 114
-      Script: {instanceID: 4754}
+      Script: {instanceID: 3558}
     - Class: 114
-      Script: {instanceID: 4914}
+      Script: {instanceID: 3590}
     - Class: 114
-      Script: {instanceID: 5348}
+      Script: {instanceID: 3832}
     - Class: 114
-      Script: {instanceID: 5504}
+      Script: {instanceID: 4234}
     - Class: 114
-      Script: {instanceID: 5576}
+      Script: {instanceID: 4466}
     - Class: 114
-      Script: {instanceID: 5808}
+      Script: {instanceID: 4480}
     - Class: 114
-      Script: {instanceID: 6402}
+      Script: {instanceID: 4496}
     - Class: 114
-      Script: {instanceID: 6522}
+      Script: {instanceID: 4700}
     - Class: 114
-      Script: {instanceID: 6708}
+      Script: {instanceID: 4792}
     - Class: 114
-      Script: {instanceID: 6766}
+      Script: {instanceID: 4952}
     - Class: 114
-      Script: {instanceID: 6904}
+      Script: {instanceID: 5386}
     - Class: 114
-      Script: {instanceID: 7198}
+      Script: {instanceID: 5542}
     - Class: 114
-      Script: {instanceID: 7874}
+      Script: {instanceID: 5614}
     - Class: 114
-      Script: {instanceID: 8582}
+      Script: {instanceID: 5846}
     - Class: 114
-      Script: {instanceID: 8704}
+      Script: {instanceID: 6440}
     - Class: 114
-      Script: {instanceID: 8794}
+      Script: {instanceID: 6560}
     - Class: 114
-      Script: {instanceID: 8798}
+      Script: {instanceID: 6746}
     - Class: 114
-      Script: {instanceID: 25698}
+      Script: {instanceID: 6804}
     - Class: 114
-      Script: {instanceID: 26164}
+      Script: {instanceID: 6820}
     - Class: 114
-      Script: {instanceID: 26348}
+      Script: {instanceID: 6942}
     - Class: 114
-      Script: {instanceID: 26586}
+      Script: {instanceID: 7236}
+    - Class: 114
+      Script: {instanceID: 7268}
+    - Class: 114
+      Script: {instanceID: 7728}
+    - Class: 114
+      Script: {instanceID: 7916}
+    - Class: 114
+      Script: {instanceID: 7986}
+    - Class: 114
+      Script: {instanceID: 8408}
+    - Class: 114
+      Script: {instanceID: 8626}
+    - Class: 114
+      Script: {instanceID: 8748}
+    - Class: 114
+      Script: {instanceID: 8760}
+    - Class: 114
+      Script: {instanceID: 28298}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -333,6 +371,18 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 2d8ea424cb663e87158e3defc8693549
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: AnimatorHandler
+  - hash:
+      serializedVersion: 2
+      Hash: ce69c1d34c3719482ff2727dc45164c1
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: PlayerMovement
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -391,6 +441,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnJointBreakMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: LookAtCamera
   - hash:
       serializedVersion: 2
       Hash: 6f67dd406ddfc18c9b3f8a90725c6266
@@ -523,6 +579,12 @@ ScriptsOnlyBuild:
     assemblyName: FishNet.Runtime
     namespaceName: FishNet.Managing.Client.Editing
     className: ClientManagerEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 50b220a0dd9fa84466a3192c1876ea21
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: Character
   - hash:
       serializedVersion: 2
       Hash: c2292249a67435596292e5d44d1467b0
@@ -789,6 +851,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 044aaa0544d8d9928b2d3d84c0739401
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: Door
+  - hash:
+      serializedVersion: 2
       Hash: 2b006c27b595e55e112de0e713333574
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -841,6 +909,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 2022c25f59990f857e904dc4fdf00b49
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NameDisplay
   - hash:
       serializedVersion: 2
       Hash: b66045c277b8b153c9296f2e195cfab1
@@ -1251,6 +1325,12 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 05add99b14e6cfe9071f382ff268002a
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: Interactable
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1321,6 +1401,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Dropdown
+  - hash:
+      serializedVersion: 2
+      Hash: dbb2b6695bd94675141539d12b68cd6a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NameSetterCanvas
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1431,6 +1517,12 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
+      Hash: c07a0792d7ca70c2d568e09ab9eae0b0
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerNameTracker
+  - hash:
+      serializedVersion: 2
       Hash: 4458d6a0edc7f549de0d09bd5b4270e2
     assemblyName: FishNet.Runtime
     namespaceName: FishNet.Component.Observing
@@ -1479,6 +1571,12 @@ ScriptsOnlyBuild:
     className: NetworkObject
   - hash:
       serializedVersion: 2
+      Hash: ce17123fe06985fa5037e2f029727ab3
+    assemblyName: Assembly-CSharp
+    namespaceName: PlaySpace
+    className: CharacterSelect
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1497,40 +1595,10 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 2d8ea424cb663e87158e3defc8693549
-    assemblyName: Assembly-CSharp
-    namespaceName: PlaySpace
-    className: AnimatorHandler
-  - hash:
-      serializedVersion: 2
-      Hash: ce69c1d34c3719482ff2727dc45164c1
-    assemblyName: Assembly-CSharp
-    namespaceName: PlaySpace
-    className: PlayerMovement
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
+      Hash: 26de2870a1d9746009717ab65cfb892e
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: LookAtCamera
-  - hash:
-      serializedVersion: 2
-      Hash: c07a0792d7ca70c2d568e09ab9eae0b0
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerNameTracker
-  - hash:
-      serializedVersion: 2
-      Hash: 2022c25f59990f857e904dc4fdf00b49
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: NameDisplay
-  - hash:
-      serializedVersion: 2
-      Hash: dbb2b6695bd94675141539d12b68cd6a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: NameSetterCanvas
+    className: ChatBroadcastGuide
   platform: 19
   scenePathNames:
   - Assets/Scenes/PlaySpaceScene.unity

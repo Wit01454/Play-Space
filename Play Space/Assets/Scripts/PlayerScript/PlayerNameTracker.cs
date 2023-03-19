@@ -46,7 +46,6 @@ public class PlayerNameTracker : NetworkBehaviour
             OnNameChange?.Invoke(Key, value);
     }
 
-        
     public static string GatPlayerName(NetworkConnection conn)
     {
         if (_instance._playerName.TryGetValue(conn, out string result))
@@ -65,7 +64,6 @@ public class PlayerNameTracker : NetworkBehaviour
     ///<param name="name"></param>
     /// <param name="sender"></param>
     [ServerRpc(RequireOwnership = false)]
-
     private void SeverSetName(string name,NetworkConnection sender = null)
     {
         _playerName[sender] = name;

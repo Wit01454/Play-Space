@@ -49,6 +49,5 @@ public class NameDisplay : NetworkBehaviour
 
         _text.text = result;
     }
-
-   
+  
 }
