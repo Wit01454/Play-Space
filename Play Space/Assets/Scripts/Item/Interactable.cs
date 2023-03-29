@@ -10,14 +10,12 @@ namespace PlaySpace
 {
     public class Interactable : NetworkBehaviour
     {
-  
         public string interactbleText;
 
-        public virtual void Interact(PlayerMovement playerMovement)
+        public virtual void Interact(PlayerManager playerManager)
         {
             Debug.Log("You  interacted with an object");
         }
-
     }
 
 }

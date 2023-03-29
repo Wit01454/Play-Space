@@ -11,6 +11,7 @@ public class ChatBroadcastGuide : MonoBehaviour
     public Transform chatHolder;
     public GameObject msgElement;
     public TMP_InputField playerUsername, playerMessage;
+    public GameObject BoxChat;
 
     private void OnEnable()
     {
@@ -64,5 +65,15 @@ public class ChatBroadcastGuide : MonoBehaviour
     {
         public string username;
         public string message;
+    }
+
+    public void OpenBoxChat()
+    {
+        BoxChat.SetActive(true);
+    }
+
+    public void ClosBoxChat()
+    {
+        BoxChat.SetActive(false);
     }
 }

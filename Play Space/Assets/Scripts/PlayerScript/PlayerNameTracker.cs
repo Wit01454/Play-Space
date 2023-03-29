@@ -40,13 +40,18 @@ public class PlayerNameTracker : NetworkBehaviour
             _playerName.Remove(arg1);
     }
 
+    internal static string GatPlayerName(object owner)
+    {
+        throw new NotImplementedException();
+    }
+
     private void _playerName_OnChange(SyncDictionaryOperation op,NetworkConnection Key,string value,bool asServer)
     {
         if (op == SyncDictionaryOperation.Add || op == SyncDictionaryOperation.Set)
             OnNameChange?.Invoke(Key, value);
     }
 
-    public static string GatPlayerName(NetworkConnection conn)
+    public static string GetPlayerName(NetworkConnection conn)
     {
         if (_instance._playerName.TryGetValue(conn, out string result))
             return result;

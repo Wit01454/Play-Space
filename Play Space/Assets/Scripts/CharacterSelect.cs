@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FishNet.Connection;
 
 namespace PlaySpace
 {
@@ -13,6 +14,8 @@ namespace PlaySpace
         [SerializeField] private TMP_Text characterNameText = default;
         [SerializeField] private float turnSpeeed = 90f;
         [SerializeField] private Character[] characters = default;
+
+
 
         private int currentChacterIndex = 0;
         private List<GameObject> characterInstances = new List<GameObject>();
@@ -35,7 +38,19 @@ namespace PlaySpace
 
             characterSelectDisplay.SetActive(true);
         }
-        
+
+        public void Select()
+        {
+            SeverSelect(currentChacterIndex);
+            characterSelectDisplay.SetActive(false);
+        }
+
+        [ServerRpc(RequireOwnership = false)]
+        public void SeverSelect(int characterIndex, NetworkConnection sender = null)
+        {
+            GameObject characterInstatiate = Instantiate(characters[characterIndex].GameplaycharacterPrefab);
+            NetworkManager.ServerManager.Spawn(characterInstatiate, sender);
+        }
 
         public void Right()
         {

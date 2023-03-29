@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Woman
   characterPreviewPrefab: {fileID: 919132149155446097, guid: 226d3c8a64514a54db90793d9d48e5dc, type: 3}
-  gameplaycharacterPrefab: {fileID: 8823576210871299412, guid: 2c2e262e9ec788f4e81da4ba8697edf5, type: 3}
+  gameplaycharacterPrefab: {fileID: 1867668063541261615, guid: 2c2e262e9ec788f4e81da4ba8697edf5, type: 3}

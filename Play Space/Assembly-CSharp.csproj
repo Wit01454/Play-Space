@@ -62,13 +62,16 @@
     <Compile Include="Assets\Scripts\Item\Interactable.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimatorManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScript\LookAtCamera.cs" />
-    <Compile Include="Assets\Scripts\Item\Door.cs" />
     <Compile Include="Assets\Scripts\Animation\AnimatorHandler.cs" />
+    <Compile Include="Assets\Scripts\PlayerScript\PlayerInteractable.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\Scripts\PlayerScript\PlayerNameTracker.cs" />
+    <Compile Include="Assets\Scripts\Item\Chair\Chair.cs" />
+    <Compile Include="Assets\Scripts\PlayerScript\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScript\PlayerMovement.cs" />
     <Compile Include="Assets\ChatBroad\ChatBroadcastGuide.cs" />
     <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
+    <Compile Include="Assets\Scripts\Item\Door\Door.cs" />
     <Compile Include="Assets\Scripts\PlayerScript\NameSetterCanvas.cs" />
     <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
     <Compile Include="Assets\Scripts\PlayerScript\NameDisplay.cs" />

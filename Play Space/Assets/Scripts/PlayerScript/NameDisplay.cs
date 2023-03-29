@@ -42,7 +42,7 @@ public class NameDisplay : NetworkBehaviour
         string result = null;
 
         if (base.Owner.IsValid)
-            result = PlayerNameTracker.GatPlayerName(base.Owner);
+            result = PlayerNameTracker.GetPlayerName(base.Owner);
 
         if (string.IsNullOrEmpty(result))
             result = "Unset";

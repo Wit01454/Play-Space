@@ -1,37 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FishNet.Connection;
 using FishNet.Object;
 
 namespace PlaySpace
 {
     public class PlayerMovement : NetworkBehaviour
     {
-        [SerializeField]
-        private GameObject _camera;
+        PlayerManager playerManager;
+
         [SerializeField]
         private float _moveRate = 4f;
         [SerializeField]
         private bool _clientAuth = true;
 
-        public AnimatorHandler animatorHandler;
         float moveAmount;
-
 
         private void Start()
         {
-            animatorHandler.Initialize();
+            playerManager = GetComponent<PlayerManager>();
         }
 
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
-            if (base.IsOwner)
-                _camera.SetActive(true);
-        }
-
-        private void Update()
+        public void HandleMovement()
         {
             if (!base.IsOwner)
                 return;
@@ -54,6 +44,7 @@ namespace PlaySpace
                 Move(hor, ver);
             else
                 ServerMove(hor, ver);
+
         }
 
         [ServerRpc]
@@ -78,34 +69,11 @@ namespace PlaySpace
 
             transform.position += transform.TransformDirection(direction);
             transform.Rotate(new Vector3(0f, hor * 100f * Time.deltaTime, 0f));
-            
-            animatorHandler.UpdateAnimatorValues(moveAmount, 0);
+
+            playerManager.animatorHandler.UpdateAnimatorValues(moveAmount, 0);
         }
 
-       
-        private void OnTriggerStay(Collider collision)
-        {
 
-            if (collision.tag == "Interactable")
-            {
-
-                Interactable interactableOpject = collision.GetComponent<Interactable>();
-
-                if (interactableOpject != null)
-                {
-
-                    string interatableText = interactableOpject.interactbleText;
-
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        collision.GetComponent<Interactable>().Interact(this);
-                    }
-                    
-                }
-
-            }
-
-        }
     }
 }
 
